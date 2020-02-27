@@ -19,11 +19,11 @@ const Form = () => {
                         </div>
                     </div>
                     <div className='row'>
-                        <div class="switch">
+                        <div className="switch">
                             <label>
                             Activar RFID: Off
                             <input type="checkbox"/>
-                            <span class="lever"></span>
+                            <span className="lever"></span>
                             On
                             </label>
                         </div>
