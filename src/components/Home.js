@@ -14,6 +14,15 @@ const Home = () => {
         listMachine()
     },[])
 
+    //update for time
+
+    setTimeout( () =>{
+        listMachine()
+        console.log("update")
+    },2000)
+
+    
+
     return(
         <Fragment>
             <nav>
