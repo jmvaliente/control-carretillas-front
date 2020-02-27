@@ -10,21 +10,6 @@ import New from './components/auth/New'
 
 function App() {
 
-  const [machines, setMachine] = useState()
-
-  useEffect( () =>{
-    const machineList = async () => {
-      
-      const url = 'http://localhost:3001'
-      
-      const machine = await axios.get(url)
-      
-      setMachine(machine.data)
-    }
-
-    machineList()
-    
-  },[])
 
   return (
     <Fragment>
