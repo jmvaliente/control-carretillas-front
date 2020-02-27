@@ -2,7 +2,7 @@ import React from 'react'
 
 const Machine = ({machine}) => {
     return(
-        <h1>Example</h1>
+    <h1>{machine.machine}</h1>
     )
 }
 
