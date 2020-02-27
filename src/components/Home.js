@@ -6,7 +6,7 @@ const Home = () => {
 
     //Use Context
     const machineContext = useContext(MachineContext) // useContext 2
-    const {machinePrueba, listMachine} = machineContext  //Extraer state
+    const {machine, listMachine} = machineContext  //Extraer state
 
 
     //add list Machine
@@ -19,7 +19,7 @@ const Home = () => {
             <nav>
                 <h4>Disponible</h4>
             </nav>
-                {machinePrueba.map( machine => (
+                {machine.map( machine => (
                     <Machine
                         key = {machine.nfc}
                         machine = {machine}

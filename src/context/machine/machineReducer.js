@@ -7,7 +7,7 @@ export default (state,action) => {  // generate Reducer 3
         case LIST_MACHINE: 
             return {
                 ...state,
-                machinePrueba: action.payload
+                machine: action.payload
             }
 
 
