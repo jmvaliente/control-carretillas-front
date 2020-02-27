@@ -7,7 +7,7 @@ const Home = ({machines}) => {
     return(
         <Fragment>
             <nav>
-                <h4>Disponibles</h4>
+                <h4>Disponible</h4>
             </nav>
                 {/*
                 {machines.map(machine => (
