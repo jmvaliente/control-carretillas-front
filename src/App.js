@@ -31,8 +31,7 @@ function App() {
       <Header/>
       <Switch>
         <Route exact path="/">
-          <Home machines={machines}
-          />
+          <Home/>
         </Route>
         <Route exact path="/login" component={Login}/>
         <Route exact path="/new-user" component={New}/>
