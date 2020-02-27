@@ -3,7 +3,7 @@ import MachineContext from './machineContext'
 import MachineReducer from './machineReducer'
 import axios from 'axios'
 
-import { LIST_MACHINE } from '../../types/index'  // Types for Map
+import { LIST_MACHINE, CHARGE_MACHINE, USE_MACHINE } from '../../types/index'  // Types for Map
 
 
 const MachineState = (props) => {  // define State 2
@@ -11,7 +11,9 @@ const MachineState = (props) => {  // define State 2
 
     const initialState = {
 
-        machine: []
+        machine: [],
+        machineCharge: [],
+        machineUse: []
     }
 
     //dispatch for ejecute actions 4
@@ -24,10 +26,41 @@ const MachineState = (props) => {  // define State 2
 
         try{
             const result = await axios.get('http://localhost:3001')
-
-
+            
             dispatch({
                 type: LIST_MACHINE,
+                payload: result.data
+            })
+
+        } catch (error){
+            console.log(error)
+        }
+
+        
+    }
+    const listMachineCharge = async () => {
+
+        try{
+            const result = await axios.get('http://localhost:3001/machine_charge')
+
+            dispatch({
+                type: CHARGE_MACHINE,
+                payload: result.data
+            })
+
+        } catch (error){
+            console.log(error)
+        }
+
+        
+    }
+    const listMachineUse = async () => {
+
+        try{
+            const result = await axios.get('http://localhost:3001/machine_use')
+
+            dispatch({
+                type: USE_MACHINE,
                 payload: result.data
             })
 
@@ -45,8 +78,12 @@ const MachineState = (props) => {  // define State 2
         <MachineContext.Provider
             value={{
                 machine: state.machine,
+                machineCharge: state.machineCharge,
+                machineUse: state.machineUse,
 
-                listMachine
+                listMachine,
+                listMachineCharge,
+                listMachineUse
             }}
         >
             {props.children}

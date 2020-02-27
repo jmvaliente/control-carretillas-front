@@ -6,22 +6,18 @@ const Home = () => {
 
     //Use Context
     const machineContext = useContext(MachineContext) // useContext 2
-    const {machine, listMachine} = machineContext  //Extraer state
+    const {machine, listMachine, machineCharge, machineUse, listMachineCharge, listMachineUse} = machineContext  //Extraer state
 
 
     //add list Machine
     useEffect ( () => {
         listMachine()
+        listMachineCharge()
+        listMachineUse()
+
     },[])
 
-    //update for time
 
-    setTimeout( () =>{
-        listMachine()
-        console.log("update")
-    },2000)
-
-    
 
     return(
         <Fragment>
@@ -37,9 +33,21 @@ const Home = () => {
             <nav>
                 <h4>Conectadas</h4>
             </nav>
+            {machineCharge.map( machine => (
+                    <Machine
+                        key = {machine.nfc}
+                        machine = {machine}
+                    />
+                ))}
             <nav>
                 <h4>En uso</h4>
             </nav>
+            {machineUse.map( machine => (
+                    <Machine
+                        key = {machine.nfc}
+                        machine = {machine}
+                    />
+                ))}
 
         </Fragment>
     )

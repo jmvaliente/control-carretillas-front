@@ -1,3 +1,5 @@
 ///// MAPEAR DISPACHT
 
 export const LIST_MACHINE = 'LIST_MACHINE'
+export const CHARGE_MACHINE = 'CHARGE_MACHINE'
+export const USE_MACHINE = 'USE_MACHINE'
