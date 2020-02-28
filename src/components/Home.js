@@ -11,9 +11,14 @@ const Home = () => {
 
     //add list Machine
     useEffect ( () => {
-        listMachine()
-        listMachineCharge()
-        listMachineUse()
+        setInterval( () =>{  // set Interval for update  and clear interval
+            
+            listMachine()
+            listMachineCharge()
+            listMachineUse()
+
+        },2000)
+        clearInterval()
 
     },[])
 
@@ -24,30 +29,38 @@ const Home = () => {
             <nav>
                 <h4>Disponible</h4>
             </nav>
-                {machine.map( machine => (
+                <div className="row">
+                    {machine.map( machine => (
                     <Machine
                         key = {machine.nfc}
                         machine = {machine}
                     />
                 ))}
+
+                </div>
+                
             <nav>
                 <h4>Conectadas</h4>
             </nav>
-            {machineCharge.map( machine => (
-                    <Machine
-                        key = {machine.nfc}
-                        machine = {machine}
-                    />
-                ))}
+                <div className="row">
+                   {machineCharge.map( machine => (
+                        <Machine
+                            key = {machine.nfc}
+                            machine = {machine}
+                        />
+                    ))}
+                </div>
             <nav>
                 <h4>En uso</h4>
             </nav>
-            {machineUse.map( machine => (
-                    <Machine
-                        key = {machine.nfc}
-                        machine = {machine}
-                    />
-                ))}
+                <div className="row">
+                    {machineUse.map( machine => (
+                        <Machine
+                            key = {machine.nfc}
+                            machine = {machine}
+                        />
+                    ))}
+                </div>
 
         </Fragment>
     )
