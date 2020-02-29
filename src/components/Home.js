@@ -17,8 +17,8 @@ const Home = () => {
             listMachineCharge()
             listMachineUse()
 
-        },2000)
-        clearInterval()
+        },1000)
+        // clearInterval(id)
 
     },[])
 
