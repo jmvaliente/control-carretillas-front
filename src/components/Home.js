@@ -18,7 +18,7 @@ const Home = () => {
             listMachineUse()
 
         },1000)
-        // clearInterval(id)
+    
 
     },[])
 

@@ -1,18 +1,32 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import AuthContext from '../../context/auth/AuthContext'
 
 
 
-const New = () => {
+const New = (props) => {
+
+    const authContext = useContext(AuthContext)
+    const  { auth, createUser } = authContext
 
     const [login, setLogin] = useState({
         name: '',
-        user: '',
+        surname: '',
         email : '',
         password : ''
     })
 
-    const { email, password, name, user } = login
+    useEffect ( () =>{
+
+        if(auth){
+            props.history.push('/')
+        }
+
+    },[auth,props.history])
+
+
+
+    const { email, password, name, surname } = login
 
 
 
@@ -27,6 +41,13 @@ const New = () => {
     const onSubmit = (e) =>{
 
         e.preventDefault();
+
+        createUser({
+            email,
+            password,
+            name,
+            surname
+        })
 
     }
 
@@ -44,20 +65,20 @@ const New = () => {
                             onChange={onChange}
                             className="validate"/>
 
-                    <label htmlFor="user">Nombre</label>
+                    <label htmlFor="name">Nombre</label>
                 </div>
             </div>
 
             <div className="row">
                 <div className="input-field col s12">
-                    <input  id="user"
+                    <input  id="surname"
                             type="text"
-                            name="user"
-                            value={user}
+                            name="surname"
+                            value={surname}
                             onChange={onChange}
                             className="validate"/>
 
-                    <label htmlFor="user">Usuario</label>
+                    <label htmlFor="surname">Apellidos</label>
                 </div>
             </div>
 
@@ -70,7 +91,7 @@ const New = () => {
                             onChange={onChange}
                             className="validate"/>
 
-                    <label htmlFor="user">email</label>
+                    <label htmlFor="email">email</label>
                 </div>
             </div>
 

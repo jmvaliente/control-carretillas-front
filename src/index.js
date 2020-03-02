@@ -5,11 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from 'react-router-dom'
 import MachineState from './context/machine/machineState' // add Context
+import AuthState from './context/auth/AuthState' //add autContext
 
 ReactDOM.render(
                 <MachineState>
-                    <Router> 
-                        <App />
+                    <Router>
+                        <AuthState>
+                            <App />
+                        </AuthState>
                     </Router>
                 </MachineState>, document.getElementById('root'));
 

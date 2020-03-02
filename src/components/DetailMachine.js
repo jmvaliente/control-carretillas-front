@@ -1,32 +1,70 @@
-import React, { useState, useEffect, useContext } from 'react'
-import MachineContext from '../context/machine/machineContext'
+import React, { useState, useEffect, Fragment } from 'react'
+import Comments from './Comments'
 import axios from 'axios'
 
-const DetailMachine = (id) => {
+const DetailMachine = (props) => {
 
-    //use Context
-    //const machineContext = useContext(machineContext)
-    //const {machine} = machineContext
 
-    const [state,setState] = useState([])
+    const [state,setState] = useState()
+
+    
 
     const detailsMachine = async () =>{
-        const machine = await axios.get(`http://localhost:3001/machine/${id}`)
+        const machine = await axios.get(`http://localhost:3001/machine/${props.match.params.id}`)
         setState(machine)
     }
+    
 
     useEffect( () => {
 
         detailsMachine()
 
     },[])
-    
+
     console.log(state)
 
-    return(
-        <h1>Detalles</h1>
+        if(state){
 
-    )
+            return(
+                
+                <Fragment>
+                    <div className="row">
+                        <div className="col s12 m12">
+                        <div className="card blue-grey darken-1">
+            
+                            <div className="card-image">
+                                <img src={state.data.image}/>
+                            </div>
+                            
+                            <div className="card-content white-text">
+                                <span className="card-title">{state.data.type}</span>
+                            <p>Number: {state.data.number}</p>
+                            <p>Provider: {state.data.provider}</p>
+                            <p>Alta: {state.data.createdAt}</p>
+                            
+                            <div>
+                                <span className="card-title">Comentarios</span>
+                            </div>
+                                <Comments 
+                                    comments = {state.data.comments}
+                                />
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                
+                </Fragment>
+            )
+        } else {
+            return(
+                <h1>Cargando....</h1>
+            )
+        }
+        
+    
+
+    
 }
 
 export default DetailMachine

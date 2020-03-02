@@ -1,9 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
+import AuthContext from '../../context/auth/AuthContext'
+
 import {Link} from 'react-router-dom'
 
 
 
+
 const Login = () => {
+
+    const authContext = useContext(AuthContext)
+    const  { loginSession } = authContext
 
     const [login, setLogin] = useState({
         email : '',
@@ -25,6 +31,9 @@ const Login = () => {
     const onSubmit = (e) =>{
 
         e.preventDefault();
+
+        loginSession({email, password})
+
 
     }
 
