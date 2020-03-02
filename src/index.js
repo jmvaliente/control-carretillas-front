@@ -6,12 +6,15 @@ import * as serviceWorker from './serviceWorker';
 import {BrowserRouter as Router} from 'react-router-dom'
 import MachineState from './context/machine/machineState' // add Context
 import AuthState from './context/auth/AuthState' //add autContext
+import ModalProvider from './context/modal/ModalContext'
 
 ReactDOM.render(
                 <MachineState>
                     <Router>
                         <AuthState>
-                            <App />
+                            <ModalProvider>
+                                <App />
+                            </ModalProvider>
                         </AuthState>
                     </Router>
                 </MachineState>, document.getElementById('root'));

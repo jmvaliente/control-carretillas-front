@@ -1,6 +1,57 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { ModalContext } from '../context/modal/ModalContext'
+import Comments from './Comments'
+
+//// modal
+import Modal from '@material-ui/core/Modal';
+import { makeStyles } from '@material-ui/core/styles';
+
+function getModalStyle() {  /// ubicacion
+    const top = 50 ;
+    const left = 50;
+  
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+    };
+}
+
+const useStyles = makeStyles(theme => ({  ///styles
+    paper: {
+      position: 'absolute',
+      width: 400,
+      backgroundColor: theme.palette.background.paper,
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+    },
+}));
+
+////modal
+
 
 const Machine = ({machine}) => {
+
+    ///// Config Modal
+    const [modalStyle] = useState(getModalStyle)
+    const [open, setOpen] = useState(false)
+
+    const classes = useStyles()
+
+    const handleOpen = () => {
+        setOpen(true)
+    }
+
+    const handleClose = () => {
+        setOpen(false)
+        setIdMachine(null)
+    }
+
+    const {detailMachine, setIdMachine} = useContext(ModalContext)
+    
+    console.log(detailMachine)
+
+    ///////////control Time/////////
 
     const restTime = () => {
         const date = new Date()
@@ -41,7 +92,24 @@ const Machine = ({machine}) => {
                             <p>RFID: {machine.nfc ? 'OK' :'NO'}</p>
                         </div>
                         <div className="card-action">
-                            <a href={`/machine/${machine._id}`}>Detalles</a>
+                            <button 
+                                type="button"
+                                onClick={ () =>{
+                                    setIdMachine(machine._id)
+                                    handleOpen()
+                                }}
+                                >Detalles
+                            </button>
+                            <Modal
+                                open={open}
+                                onClose={() => {
+                                    handleClose()
+                                }}
+                            >
+                                <div style={modalStyle} className={classes.paper}>
+                                    <h2>Modal</h2> 
+                                </div>
+                            </Modal>
                         </div>
                     </div>
                 </div>

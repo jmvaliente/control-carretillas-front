@@ -1,8 +1,10 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect, Fragment, useContext } from 'react'
 import Comments from './Comments'
 import axios from 'axios'
 
 const DetailMachine = (props) => {
+
+    
 
 
     const [state,setState] = useState()
