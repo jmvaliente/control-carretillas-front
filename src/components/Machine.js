@@ -41,7 +41,7 @@ const Machine = ({machine}) => {
                             <p>RFID: {machine.nfc ? 'OK' :'NO'}</p>
                         </div>
                         <div className="card-action">
-                            <a href="!#">Detalles</a>
+                            <a href={`/machine/${machine._id}`}>Detalles</a>
                         </div>
                     </div>
                 </div>

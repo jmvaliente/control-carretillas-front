@@ -3,8 +3,21 @@ import MachineContext from './machineContext'
 import MachineReducer from './machineReducer'
 import axios from 'axios'
 
-import { LIST_MACHINE, CHARGE_MACHINE, USE_MACHINE } from '../../types/index'  // Types for Map
+import { LIST_MACHINE, CHARGE_MACHINE, USE_MACHINE } from '../../types'  // Types for Map
 
+const allMachines = result => ({
+    type: LIST_MACHINE,
+    payload: result.data
+})
+const allChargeMachines = result => ({
+    type: CHARGE_MACHINE,
+    payload: result.data
+})
+
+const allUsedMachines = result => ({
+    type: USE_MACHINE,
+    payload: result.data
+})
 
 const MachineState = (props) => {  // define State 2
 
@@ -27,15 +40,11 @@ const MachineState = (props) => {  // define State 2
         try{
             const result = await axios.get('http://localhost:3001')
             
-            dispatch({
-                type: LIST_MACHINE,
-                payload: result.data
-            })
+            dispatch(allMachines(result))
 
         } catch (error){
             console.log(error)
         }
-
         
     }
     const listMachineCharge = async () => {
@@ -43,15 +52,11 @@ const MachineState = (props) => {  // define State 2
         try{
             const result = await axios.get('http://localhost:3001/machine_charge')
 
-            dispatch({
-                type: CHARGE_MACHINE,
-                payload: result.data
-            })
+            dispatch(allChargeMachines(result))
 
         } catch (error){
             console.log(error)
         }
-
         
     }
     const listMachineUse = async () => {
@@ -59,15 +64,11 @@ const MachineState = (props) => {  // define State 2
         try{
             const result = await axios.get('http://localhost:3001/machine_use')
 
-            dispatch({
-                type: USE_MACHINE,
-                payload: result.data
-            })
+            dispatch(allUsedMachines(result))
 
         } catch (error){
             console.log(error)
         }
-
         
     }
 
