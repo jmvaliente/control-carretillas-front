@@ -30,8 +30,9 @@ const DetailMachine = (props) => {
             return(
                 
                 <Fragment>
-                    <div className="row">
-                        <div className="col s12 m12">
+                    <div className="container">
+                        <div className="row">
+                        <div className="col s12 m12 card">
                         <div className="card blue-grey darken-1">
             
                             <div className="card-image">
@@ -52,6 +53,7 @@ const DetailMachine = (props) => {
                                 />
                             
                             </div>
+                        </div>
                         </div>
                         </div>
                     </div>

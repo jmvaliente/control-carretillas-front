@@ -91,10 +91,38 @@ const Machine = ({machine}) => {
         const secTime = timeConnect.getSeconds()
 
         if(hourTime>=8){
-            return(`Carga Completa`)
+            return(
+            <div>
+                <p>Carga Completa</p>
+                <a 
+                    href={`/machine/${machine._id}`}
+                    className="waves-effect waves-light btn"
+                >
+                    Detalles
+                </a>
+            </div>
+            )
         }else{
             
-            return (`H. Recarga: ${hoursRest}:${minRest} Restante: ${hourTime}:${minTime}:${secTime}`)
+            return (
+                <div>
+                <p>{`H. Recarga: ${hoursRest}:${minRest} Restante: ${hourTime}:${minTime}:${secTime}`}</p>
+                        <button 
+                            type="button"
+                            className="waves-effect waves-light btn"
+                            onClick={ () =>{
+                                handleOpen()
+                            }}
+                            >Desconectar
+                            </button>
+                            <a 
+                            href={`/machine/${machine._id}`}
+                            className="waves-effect waves-light btn"
+                            >
+                            Detalles
+                            </a>
+            </div>
+            )
         }
         
     }
@@ -117,25 +145,20 @@ const Machine = ({machine}) => {
                             <p>Tipo: <span>{machine.type}</span></p>
                             <p>Numero: <span>{machine.number}</span></p>
                             <p>Proveedor: <span>{machine.provider}</span></p>
-                            {machine.nfcActive ? <p><span>{restTime()}</span></p> : null}
                             <p>RFID: {machine.nfc ? 'OK' :'NO'}</p>
+                            {machine.nfcActive ? <p><span>{restTime()}</span></p>
+                                                :
+                                                <div>
+                                                    <p>Carga Completa</p>
+                                                    <a 
+                                                        href={`/machine/${machine._id}`}
+                                                        className="waves-effect waves-light btn"
+                                                    >
+                                                        Detalles
+                                                    </a>
+                                                </div>
+                                                }
                         </div>
-                        <div className="card-action">
-                            <button 
-                                type="button"
-                                className="waves-effect waves-light btn"
-                                onClick={ () =>{
-                                    handleOpen()
-                                }}
-                                >Desconectar
-                            </button>
-                            <a 
-                                href={`/machine/${machine._id}`}
-                                className="waves-effect waves-light btn"
-                            >
-                                Detalles
-                            </a>
-                            
                             <Modal
                                 open={open}
                                 onClose={() => {
@@ -146,7 +169,6 @@ const Machine = ({machine}) => {
                                 <h2>Ciclo de Carga incompleto</h2>
                                 </div>
                             </Modal>
-                        </div>
                     </div>
                 </div>
             </div>
