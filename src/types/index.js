@@ -5,6 +5,7 @@ export const CHARGE_MACHINE = 'CHARGE_MACHINE'
 export const USE_MACHINE = 'USE_MACHINE'
 
 
+
 //// LOGIN
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'

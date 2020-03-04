@@ -11,14 +11,13 @@ const ModalProvider = (props) => {
     useEffect( () => {
         const machineDetail = async () =>{
             if(!idMachine) return
-
+            
             const url = `http://localhost:3001/machine/${idMachine}`
 
             const result = await axios.get(url)
 
-            setDetailMachine(result)
+            setDetailMachine(result.data)
         }
-
         machineDetail()
     },[idMachine])
 
@@ -28,7 +27,7 @@ const ModalProvider = (props) => {
             value={{
                 detailMachine,
                 setIdMachine
-                
+
             }}
         >
             {props.children}

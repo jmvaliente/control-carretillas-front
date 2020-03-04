@@ -6,7 +6,13 @@ const Home = () => {
 
     //Use Context
     const machineContext = useContext(MachineContext) // useContext 2
-    const {machine, listMachine, machineCharge, machineUse, listMachineCharge, listMachineUse} = machineContext  //Extraer state
+    const { machine,
+            listMachine,
+            machineCharge,
+            machineUse,
+            listMachineCharge,
+            listMachineUse
+            } = machineContext  //Extraer state
 
 
     //add list Machine
@@ -27,20 +33,7 @@ const Home = () => {
     return(
         <Fragment>
             <nav>
-                <h4>Disponible</h4>
-            </nav>
-                <div className="row">
-                    {machine.map( machine => (
-                    <Machine
-                        key = {machine.nfc}
-                        machine = {machine}
-                    />
-                ))}
-
-                </div>
-                
-            <nav>
-                <h4>Conectadas</h4>
+                <h4>Conectadas y Disponibles</h4>
             </nav>
                 <div className="row">
                    {machineCharge.map( machine => (

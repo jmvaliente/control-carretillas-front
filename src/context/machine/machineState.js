@@ -26,7 +26,8 @@ const MachineState = (props) => {  // define State 2
 
         machine: [],
         machineCharge: [],
-        machineUse: []
+        machineUse: [],
+
     }
 
     //dispatch for ejecute actions 4
@@ -72,6 +73,19 @@ const MachineState = (props) => {  // define State 2
         
     }
 
+    const updateCompleteCharge = async machine => {
+        console.log(machine)
+        try{
+            const result = await axios.put(`http://localhost:3001/update/${machine._id}`,machine.completeCharge)
+            console.log(machine)
+            
+
+        }catch (error){
+            console.log(error)
+        }
+        
+    }
+
 
 
 
@@ -84,7 +98,8 @@ const MachineState = (props) => {  // define State 2
 
                 listMachine,
                 listMachineCharge,
-                listMachineUse
+                listMachineUse,
+                updateCompleteCharge
             }}
         >
             {props.children}
