@@ -32,29 +32,29 @@ const DetailMachine = (props) => {
                 <Fragment>
                     <div className="container">
                         <div className="row">
-                        <div className="col s12 m12 card">
-                        <div className="card blue-grey darken-1">
-            
-                            <div className="card-image">
-                                <img src={state.data.image}/>
+                            <div className="col s12 m12 card">
+                                <div className="card blue-grey darken-1">
+                    
+                                    <div className="card-image">
+                                        <img src={state.data.image}/>
+                                    </div>
+                                    
+                                    <div className="card-content white-text">
+                                        <span className="card-title">{state.data.type}</span>
+                                    <p>Number: {state.data.number}</p>
+                                    <p>Provider: {state.data.provider}</p>
+                                    <p>Alta: {state.data.createdAt}</p>
+                                    
+                                    <div>
+                                        <span className="card-title">Comentarios</span>
+                                    </div>
+                                        <Comments 
+                                            comments = {state.data.comments}
+                                        />
+                                    
+                                    </div>
+                                </div>
                             </div>
-                            
-                            <div className="card-content white-text">
-                                <span className="card-title">{state.data.type}</span>
-                            <p>Number: {state.data.number}</p>
-                            <p>Provider: {state.data.provider}</p>
-                            <p>Alta: {state.data.createdAt}</p>
-                            
-                            <div>
-                                <span className="card-title">Comentarios</span>
-                            </div>
-                                <Comments 
-                                    comments = {state.data.comments}
-                                />
-                            
-                            </div>
-                        </div>
-                        </div>
                         </div>
                     </div>
                 

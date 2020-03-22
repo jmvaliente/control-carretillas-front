@@ -93,7 +93,7 @@ const Machine = ({machine}) => {
         if(hourTime>=8){
             return(
             <div>
-                <p>Carga Completa</p>
+                <h5 className="green-text">Carga Completa</h5>
                 <a 
                     href={`/machine/${machine._id}`}
                     className="waves-effect waves-light btn"
@@ -149,7 +149,6 @@ const Machine = ({machine}) => {
                             {machine.nfcActive ? <p><span>{restTime()}</span></p>
                                                 :
                                                 <div>
-                                                    <p>Carga Completa</p>
                                                     <a 
                                                         href={`/machine/${machine._id}`}
                                                         className="waves-effect waves-light btn"
@@ -164,9 +163,15 @@ const Machine = ({machine}) => {
                                 onClose={() => {
                                     handleClose()
                                 }}
+                                onClick={() => {
+                                    handleClose()
+                                }}
                             >
                                 <div style={modalStyle} className={classes.paper}>
                                 <h2>Ciclo de Carga incompleto</h2>
+                                <h5>Tec. Mantenimiento / operario</h5>
+                                <input/>
+                                <input type="submit" className="waves-effect waves-light btn" value="Insertar"/>
                                 </div>
                             </Modal>
                     </div>

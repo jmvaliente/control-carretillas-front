@@ -108,9 +108,9 @@ const New = (props) => {
                 </div>
             </div>
             <div className="row">
-                <input type="submit" className="waves-effect waves-light btn" value="Iniciar Sesion"/>
+                <input type="submit" className="waves-effect waves-light btn" value="Registrarse"/>
             </div>
-            <Link to="/new-user">Registrarse</Link>
+            
         </form>
     )
 }
